@@ -17,6 +17,9 @@ who can and will read the code.
 - Document peculiarities: edge cases, side effects, ordering guarantees,
   nil and error handling, anything a reader would not expect from the
   signature alone.
+- Keep peculiarities caller-actionable. Document what the caller must
+  handle (return shape, what raises, side effects on disk or state), not
+  how the function works internally. The reader has the code for the how.
 
 ## What to leave out
 
@@ -25,6 +28,16 @@ who can and will read the code.
 - No examples on internal functions. If one seems truly necessary, ask
   first.
 - No marketing language, no filler.
+- No provenance or lineage notes. Do not write "port of X", "mirrors
+  `foo.ts`", "based on", or cross-repo file paths. They carry no value to
+  a reader and rot when the source moves or disappears.
+
+## Auditing existing docs
+
+- Bias toward cutting. When the code is already documented, look first
+  for text to delete, not text to add.
+- Prefer the shortest doc that still names the surprising behavior. When
+  in doubt, cut.
 
 ## Form
 
